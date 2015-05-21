@@ -6,3 +6,4 @@
 5. grpc
 6. gpm
 7. gvp
+8. registrator
