@@ -1,4 +1,3 @@
-cd ..
 cd ./bgsave
 git pull
 cd ..

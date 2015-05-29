@@ -1,4 +1,3 @@
-cd ..
 cd ./bgsave
 source gvp
 gpm
