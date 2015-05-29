@@ -7,3 +7,12 @@
 6. gpm
 7. gvp
 8. registrator
+9. vagrant
+10. vim
+11. vundle
+12. zsh
+13. oh-my-zsh
+14. redis
+15. mongodb
+16. iTerm2
+17. Mac
