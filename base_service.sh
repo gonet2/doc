@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
 #start all base service.
+#default is localhost:4001,localhost:2379, it's can't forward port to host ip.
+export ETCD_ADDR='0.0.0.0:4001'
 case $1 in
 	start)
 		#1. mongodb listen : 27017
@@ -14,7 +16,7 @@ case $1 in
 		$GOBIN/nsqd --lookupd-tcp-address=127.0.0.1:4160 &
 		#nsqadmin http: 0.0.0.0:4171
 		$GOBIN/nsqadmin --lookupd-http-address=127.0.0.1:4161 &
-		#4. etcd
+		#4. etcd 4001 for client 
 		$GOBIN/etcd &
 		#5. gliderlabs/registrator
 		docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="127.0.0.1" etcd://127.0.0.1:4001/backends
@@ -29,5 +31,3 @@ case $1 in
 		docker stop $(docker ps |grep  gliderlabs/registrator|cut -b 1-12)
 		;;
 esac
-
-
