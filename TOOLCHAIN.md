@@ -16,3 +16,4 @@
 15. mongodb
 16. iTerm2
 17. Mac
+18. etcd-browser
