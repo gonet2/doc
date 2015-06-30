@@ -8,22 +8,26 @@
 6. libs 游戏公共组件包
 7. rank 排名服务
 
-服务关系：
-<prev>
-                          
-         |->  auth， chat， rank         
-         |                  
-         |              
-         |    |-> game1                         
-         |    |                         
-agent1  ----->|-> game2                         
-              |                          
-agent2  ----->|-> game3     |  snowflake                  
-              |             |              
-               -> game4  -->|  chat2             
-                            |             
-                            |  rank2         
-</prev>
+# 服务关系： 
+
+                 +
+                 |
+                 +--------------> auth
+                 |
+                 +----> game1
+                 |
+    agent1+------>
+                 |
+                 +----> game2
+                 |                +
+    agent2+------>                +-----> snowflake
+                 |                |
+                 +----> game3+---->
+                 |                |
+                 |                +-----> chat
+                 ++               |
+                                  +-----> rank
+                                  +        
 游戏服为小服结构，即一个game服务，对应游戏中的一个服务器。
 agent只保持连接， 不做具体游戏逻辑处理。只处理保留的协议号（0-1000）， 其它全部转发
 agent <==> game  之间为grpc双向流, 直接转发agent协议包到game
