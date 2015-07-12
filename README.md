@@ -31,7 +31,7 @@
 4. [chat](https://github.com/GameGophers/chat): 聊天服务      
 5. [auth](https://github.com/GameGophers/auth): 鉴权，登陆环节     
 6. [libs](https://github.com/GameGophers/libs): 公共组件包       
-7. [rank](https://github.com/GameGophers/ranks): 排名服务     
+7. [rank](https://github.com/GameGophers/rank): 排名服务     
 8. [geoip](https://github.com/GameGophers/geoip): IP归属查询
 9. [arch](https://github.com/GameGophers/arch): 归档服务
 10. [bgsave](https://github.com/GameGophers/bgsave): 与redis结合的存档服务
