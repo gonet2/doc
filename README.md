@@ -32,6 +32,10 @@
 5. auth: 鉴权，登陆环节     
 6. libs: 公共组件包       
 7. rank: 排名服务     
+8. geoip: IP归属查询
+9. arch: 归档服务
+10. bgsave: 与redis结合的存档服务
+11. wordfilter: 脏词过滤服务
 
 # 基础设施
 1. nsq
