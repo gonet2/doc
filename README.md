@@ -38,6 +38,7 @@
 
 
 ## 游戏架构
+进入每个服务阅读对应文档      
 1. [agent](https://github.com/GameGophers/agent): 网关      
 2. [game](https://github.com/GameGophers/game): 游戏逻辑     
 3. [snowflake](https://github.com/GameGophers/snowflake): UUID发生器      
