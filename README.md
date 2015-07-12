@@ -22,30 +22,28 @@
 2. 支持服务器推送（例如pubsub服务）        
 3. 支持双向流传递 (透传stream到后端)        
 
-我们暂不想自己设计RPC，一是目前RPC繁多，没必要继续发明一个轮子，二是作为开源项目，尽量充分融入社区，利用现有资源。我们发现目前http2支持所有以上的要求，google推出的gRPC就是基于http2的RPC实现，当前架构中，所有的服务(microservice)全部通过gRPC连接在一起。
+我们暂不想自己设计RPC，一是目前RPC繁多，没必要重新发明一个轮子，二是作为开源项目，尽量充分融入社区，利用现有资源。我们发现目前http2支持所有以上的要求，google推出的gRPC就是基于http2的RPC实现，当前架构中，所有的服务(microservice)全部通过gRPC连接在一起。
 
 ## 游戏架构
-1. agent: 网关      
-2. game: 游戏逻辑     
-3. snowflake: UUID发生器      
-4. chat: 聊天服务      
-5. auth: 鉴权，登陆环节     
-6. libs: 公共组件包       
-7. rank: 排名服务     
-8. geoip: IP归属查询
-9. arch: 归档服务
-10. bgsave: 与redis结合的存档服务
-11. wordfilter: 脏词过滤服务
+1. [agent](https://github.com/GameGophers/agent): 网关      
+2. [game](https://github.com/GameGophers/game): 游戏逻辑     
+3. [snowflake](https://github.com/GameGophers/snowflake): UUID发生器      
+4. [chat](https://github.com/GameGophers/chat): 聊天服务      
+5. [auth](https://github.com/GameGophers/auth): 鉴权，登陆环节     
+6. [libs](https://github.com/GameGophers/libs): 公共组件包       
+7. [rank](https://github.com/GameGophers/ranks): 排名服务     
+8. [geoip](https://github.com/GameGophers/geoip): IP归属查询
+9. [arch](https://github.com/GameGophers/arch): 归档服务
+10. [bgsave](https://github.com/GameGophers/bgsave): 与redis结合的存档服务
+11. [wordfilter](https://github.com/GameGophers/wordfilter): 脏词过滤服务
 
 # 基础设施
-1. nsq
-2. etcd
-
+1. [nsq](http://nsq.io/)
+2. [etcd](https://github.com/coreos/etcd)
 基础设施是用于支撑整个架构的基石，选择nsq, etcd的理由是:         
 1. 全部采用go实现，技术栈统一         
 2. nsq在bitly商用效果很好，能支持大规模的，高可用(特别是发生网络分区)的分布式应用        
-3. etcd是coreos出品的coordinator, 已经得到大面积的使用，有成功案例。      
-
+3. etcd是coreos出品的coordinator, 已经得到大面积的使用，有成功案例，配套完善。      
 
 ## 服务关系： 
 
@@ -71,8 +69,8 @@
 
 具体的服务描述以及使用案例，请进入各个目录中阅读
 
-所有服务都依赖的一个基础服务是nsqd，用来搜集日志，所有的服务会把日志发送到本地的nsqd收集，nsqlookupd管理nsqd拓扑，通过tailn工具或nsq_tail，可以读取格式化的日志(json)，消息主题为 : LOG
+所有服务都依赖的一个基础服务是nsqd，用来搜集日志，所有的服务会把日志发送到本地的nsqd收集，通过nsqlookupd管理nsqd拓扑，通过tailn工具或nsq_tail，可以集中收集格式化的日志(json)，消息主题为 : LOG。
 
-游戏中的归档日志(REDOLOG)，也会通过nsqd收集，并通过arch服务自动归档，消息主题为REDOLOG。
+游戏中的归档日志(REDOLOG)，也会通过nsqd发布，并通过arch服务自动归档，消息主题为REDOLOG。
 
-
+nsqd部署的方式为： **每个服务器实例部署一个**
