@@ -39,8 +39,10 @@
 
 # 基础设施
 1. [nsq](http://nsq.io/)          
-2. [etcd](https://github.com/coreos/etcd)           
+2. [etcd](https://github.com/coreos/etcd)  
+
 基础设施是用于支撑整个架构的基石，选择nsq, etcd的理由是:            
+
 1. 全部采用go实现，技术栈统一          
 2. nsq在bitly商用效果很好，能支持大规模的，高可用(特别是发生网络分区)的分布式应用              
 3. etcd是coreos出品的coordinator, 已经得到大面积的使用，有成功案例，配套完善。             
