@@ -1,4 +1,4 @@
-# GameGophers
+# gonet/2
 ## 目录
 1. [README.md](README.md) -- 当前文档
 2. [ROADMAP.md](ROADMAP.md) -- 开发计划
@@ -39,17 +39,17 @@
 
 ## 游戏架构
 进入每个服务阅读对应文档      
-1. [agent](https://github.com/GameGophers/agent): 网关      
-2. [game](https://github.com/GameGophers/game): 游戏逻辑     
-3. [snowflake](https://github.com/GameGophers/snowflake): UUID发生器      
-4. [chat](https://github.com/GameGophers/chat): 聊天服务      
-5. [auth](https://github.com/GameGophers/auth): 鉴权，登陆环节     
-6. [libs](https://github.com/GameGophers/libs): 公共组件包       
-7. [rank](https://github.com/GameGophers/rank): 排名服务     
-8. [geoip](https://github.com/GameGophers/geoip): IP归属查询         
-9. [arch](https://github.com/GameGophers/arch): 归档服务          
-10. [bgsave](https://github.com/GameGophers/bgsave): 与redis结合的存档服务          
-11. [wordfilter](https://github.com/GameGophers/wordfilter): 脏词过滤服务            
+1. [agent](https://github.com/gonet2/agent): 网关      
+2. [game](https://github.com/gonet2/game): 游戏逻辑     
+3. [snowflake](https://github.com/gonet2/snowflake): UUID发生器      
+4. [chat](https://github.com/gonet2/chat): 聊天服务      
+5. [auth](https://github.com/gonet2/auth): 鉴权，登陆环节     
+6. [libs](https://github.com/gonet2/libs): 公共组件包       
+7. [rank](https://github.com/gonet2/rank): 排名服务     
+8. [geoip](https://github.com/gonet2/geoip): IP归属查询         
+9. [arch](https://github.com/gonet2/arch): 归档服务          
+10. [bgsave](https://github.com/gonet2/bgsave): 与redis结合的存档服务          
+11. [wordfilter](https://github.com/gonet2/wordfilter): 脏词过滤服务            
 
 # 基础设施
 1. [nsq](http://nsq.io/)          
