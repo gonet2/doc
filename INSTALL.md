@@ -34,29 +34,33 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
  
          $docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
 		
-### 启动各个服务
-		1. docker中运行：所有服务运行在docker中，并通过registrator自动注册；
-		snowflake, auth, game, ...
-		如snowflake:
-			$cd snowflake
-			$docker build -t snowflake
-			$docker run -d --name snowflake -e SERVICE_ID=snowflake1 -P snowflake
+### Docker启动
+docker中运行：所有服务运行在docker中，并通过registrator自动注册；            
+如snowflake:  
 
-		2. 如果需要手动注册或不使用docker, 则需要自己把服务注册进etcd server, 格式为： /backends/SERVICE_NAME/SERVICE_ID 
-		如snowflake:
-			$cd snowflake
-			$source gvp
-			$gpm
-			$go install agent
-			$./startup.sh
-			$etcdctl set /backends/snowflake/snowflake1 172.17.42.1:51006
+         $cd snowflake
+         $docker build -t snowflake
+         $docker run -d --name snowflake -e SERVICE_ID=snowflake1 -P snowflake
 
-	3. 启动agent[agent不需要在docker中运行]
-	    $cd agent
-	    $source gvp
-	    $gpm
-	    $go install agent
-	    $./startup.sh
+
+### 普通启动
+比如启动agent: 
+
+         $cd agent
+         $source gvp
+         $gpm
+         $go install agent
+         $./startup.sh
+
+### 服务注册
+一般情况下， registrator 会自动注册通过docker启动的服务, 为了调试的方便，可以不通过docker启动，并且手动注册到etcd， etcd的服务注册地址为:
+
+         /backends/SERVICE_NAME/SERVICE_ID 
+         
+例如:
+
+         $etcdctl set /backends/snowflake/snowflake1 172.17.42.1:51006
+
 
 ## 工具安装
 	1.tailn 查看所有服务的日志
