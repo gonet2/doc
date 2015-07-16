@@ -18,7 +18,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
      $curl -s https://raw.githubusercontent.com/gonet2/tools/master/clone_all.sh | sh      
 
 
-## 启动顺序[base_service.sh](base_service.sh)     
+## 启动顺序   
 ###启动基础设施
 1. nsq        
 
@@ -33,6 +33,8 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 3. gliderlabs/registrator
  
          $docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
+
+PS: 参考启动脚本: [base_service.sh](base_service.sh)  
 		
 ### Docker启动
 docker中运行：所有服务运行在docker中，并通过registrator自动注册；            
