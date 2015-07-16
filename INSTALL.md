@@ -18,8 +18,8 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
      $curl -s https://raw.githubusercontent.com/gonet2/tools/master/clone_all.sh | sh      
 
 
-## 启动顺序   
-###启动基础设施
+## 启动
+### 基础设施
 1. nsq        
 
         $nsqlookupd --tcp-address=172.17.42.1:4160 --http-address=172.17.42.1:4161 &       
@@ -36,7 +36,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 
 PS: 参考启动脚本: [base_service.sh](base_service.sh)  
 		
-### Docker启动
+### Docker启动服务(推荐)
 docker中运行：所有服务运行在docker中，并通过registrator自动注册；            
 如snowflake:  
 
@@ -45,7 +45,7 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
          $docker run -d --name snowflake -e SERVICE_ID=snowflake1 -P snowflake
 
 
-### 普通启动
+### 普通启动服务
 比如启动agent: 
 
          $cd agent
