@@ -6,7 +6,9 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 ## 基础设施
 1. http://nsq.io/        
 2. https://github.com/coreos/etcd       
-3. https://www.docker.com/             
+3. https://www.docker.com/    
+4. https://github.com/pote/gvp
+5. https://github.com/pote/gpm
 
 请预先安装好上述环境，并确保172.17.42.1是容器可访问地址     
 
