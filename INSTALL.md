@@ -19,20 +19,22 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 
 
 ## 启动顺序[base_service.sh](base_service.sh)     
-	1. 启动基础设施
-		1. nsq
-		nsqlookup
-			$nsqlookupd --tcp-address=172.17.42.1:4160 --http-address=172.17.42.1:4161 &
-		nsqd
-			$nsqd --lookupd-tcp-address=172.17.42.1:4160 --tcp-address=172.17.42.1:4150 --http-address=172.17.42.1:4151 &
-		nsqadmin
-			$nsqadmin --lookupd-http-address=172.17.42.1:4161 --http-address=172.17.42.1:4171 &
-		2. etcd
-			$etcd &
-		3. gliderlabs/registrator
-			$docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="<red>public_ip_that_all_services_can_access</red>" etcd://172.17.42.1:2379/backends
+###启动基础设施
+1. nsq        
+
+        $nsqlookupd --tcp-address=172.17.42.1:4160 --http-address=172.17.42.1:4161 &       
+        $nsqd --lookupd-tcp-address=172.17.42.1:4160 --tcp-address=172.17.42.1:4150 --http-address=172.17.42.1:4151 &
+        $nsqadmin --lookupd-http-address=172.17.42.1:4161 --http-address=172.17.42.1:4171 &
+
+2. etcd
+
+        $etcd &
+
+3. gliderlabs/registrator
+ 
+         $docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
 		
-	2. 启动各个服务
+### 启动各个服务
 		1. docker中运行：所有服务运行在docker中，并通过registrator自动注册；
 		snowflake, auth, game, ...
 		如snowflake:
