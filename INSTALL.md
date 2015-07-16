@@ -9,8 +9,6 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 3. https://www.docker.com/    
 4. https://github.com/pote/gvp
 5. https://github.com/pote/gpm
-6. https://mongodb.org
-7. https://github.com/henszey/etcd-browser
 
 请预先安装好上述环境，并确保172.17.42.1是容器可访问地址，所有基础设施都应该监听这个地址， 如mongodb, nsq, etcd
 
@@ -22,23 +20,16 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 
 ## 启动顺序[base_service.sh](base_service.sh)     
 	1. 启动基础设施
-		1. mongodb config need change bind ip : 172.17.42.1
-			sudo service mongod start
-		3. nsq
+		1. nsq
 		nsqlookup
-			$GOBIN/nsqlookupd --tcp-address=172.17.42.1:4160 --http-address=172.17.42.1:4161 &
+			nsqlookupd --tcp-address=172.17.42.1:4160 --http-address=172.17.42.1:4161 &
 		nsqd
-			$GOBIN/nsqd --lookupd-tcp-address=172.17.42.1:4160 --tcp-address=172.17.42.1:4150 --http-address=172.17.42.1:4151 &
+			nsqd --lookupd-tcp-address=172.17.42.1:4160 --tcp-address=172.17.42.1:4150 --http-address=172.17.42.1:4151 &
 		nsqadmin
-			$GOBIN/nsqadmin --lookupd-http-address=172.17.42.1:4161 --http-address=172.17.42.1:4171 &
-		4. etcd
-			$GOBIN/etcd &
-		5. etcd-browser[TODO etcd-browser not need registe on etcd backends, it will be make the services confusion]
-			cd etcd-browser
-			docker build -t etcd-browser .
-			docker run -d --name etcd-browser -p 0.0.0.0:8000:8000 --env ETCD_HOST=172.17.42.1:4001 etcd-browser
-		
-		6. gliderlabs/registrator
+			nsqadmin --lookupd-http-address=172.17.42.1:4161 --http-address=172.17.42.1:4171 &
+		2. etcd
+			etcd &
+		3. gliderlabs/registrator
 			docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="<red>public_ip_that_all_services_can_access</red>" etcd://172.17.42.1:2379/backends
 		
 	2. 启动各个服务[所有服务需要运行在docker中， 并通过registrator自动注册]
@@ -58,9 +49,9 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 ## 工具安装
 	1.tailn 查看所有服务的日志
 		go get https://github.com/gonet2/tools/tailn
-		$GOBIN/tailn
+		tailn
 	
 	2. upload_numbers 上传配置文件到etcd(以逗号分割的csv文件)
 		go get https://github.com/gonet2/tools/upload_numbers
-		$GOBIN/upload_numbers numbers --addr http://172.17.42.1:4001 --dir ~/gonet2/gamedata --pattern="/*.csv"
+		upload_numbers numbers --addr http://172.17.42.1:4001 --dir ~/gonet2/gamedata --pattern="/*.csv"
 	

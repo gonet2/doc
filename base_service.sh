@@ -2,11 +2,13 @@
 
 #start all base service.
 #default is localhost:4001,localhost:2379, it's can't forward port to host ip.
+#all the program need to copy in to GOBIN
+export GOBIN=/go/bin
 export ETCD_ADDR="172.17.42.1:2379"
 case $1 in
 	start)
 		#1. mongodb listen : 27017
-		sudo service mongod start
+		#sudo service mongod start
 		#2. redis listen : 6379
 		#/usr/local/bin/redis-server /go/redis/conf/redis.conf &
 		#3. nsq
@@ -22,7 +24,7 @@ case $1 in
 		docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="public_ip_that_all_services_can_access" etcd://172.17.42.1:2379/backends
 		;;
 	stop)
-		sudo service mongod stop
+		#sudo service mongod stop
 		#killall redis-server
 		killall nsqlookupd
 		killall nsqd
