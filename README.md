@@ -4,6 +4,9 @@
 2. [ROADMAP.md](ROADMAP.md) -- 开发计划
 3. [TOOLCHAIN.md](TOOLCHAIN.md) -- 工具链
 
+## 安装
+<pre> curl -s https://raw.githubusercontent.com/gonet2/tools/master/clone_all.sh | sh </pre>
+
 ## 核心理念
 > 关键词: 分布式，手游服务器，基于GO语言        
 
@@ -90,3 +93,6 @@
 游戏中的归档日志(REDOLOG)，也会通过nsqd发布，并通过arch服务自动归档，消息主题为REDOLOG。
 
 nsqd部署的方式为： **每个服务器实例部署一个**
+
+## QQ
+QQ: 459420581
