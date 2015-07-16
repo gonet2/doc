@@ -3,9 +3,7 @@
 1. [README.md](README.md) -- 当前文档
 2. [ROADMAP.md](ROADMAP.md) -- 开发计划
 3. [TOOLCHAIN.md](TOOLCHAIN.md) -- 工具链
-
-## 安装
-<pre> curl -s https://raw.githubusercontent.com/gonet2/tools/master/clone_all.sh | sh </pre>
+4. [INSTALL.md](INSTALL.md) -- 安装
 
 ## 核心理念
 > 关键词: 分布式，手游服务器，基于GO语言        
