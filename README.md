@@ -96,3 +96,8 @@ nsqd部署的方式为： **每个服务器实例部署一个**
 
 ## QQ
 QQ: 459420581
+
+## 链接
+[Gonet2游戏服务器框架解析](http://blog.csdn.net/q26335804/article/category/5726691)  -- by 高
+
+PS. 感谢热心网友
