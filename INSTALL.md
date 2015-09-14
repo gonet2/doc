@@ -21,7 +21,8 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 ## 启动
 ### 基础设施
 1. nsq        
-docker启动(开发环境推荐):
+
+    docker启动(开发环境推荐):
 
         docker pull nsqio/nsq
         docker run --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
@@ -31,7 +32,7 @@ docker启动(开发环境推荐):
         --broadcast-address=172.17.42.1 \
         --lookupd-tcp-address=172.17.42.1:4160
 
-本地运行(生产环节推荐):
+    本地运行(生产环节推荐):
 
         $nsqlookupd --tcp-address=172.17.42.1:4160 --http-address=172.17.42.1:4161 &       
         $nsqd --lookupd-tcp-address=172.17.42.1:4160 --tcp-address=172.17.42.1:4150 --http-address=172.17.42.1:4151 &
