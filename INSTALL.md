@@ -12,47 +12,25 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 
 请预先安装好上述环境，并确保172.17.42.1是容器可访问地址，所有基础设施都应该监听这个地址， 如mongodb, nsq, etcd
 
+## 基础设施的参考安装(docker)
+包含: etcd, nsq, statsd, registrator
+
+      sudo ip addr add 172.17.42.1/16 dev docker0
+      docker pull quay.io/coreos/etcd-git
+      sudo docker run -d -p 27017:27017  -v /data/db:/data/db -d mongo
+      sudo docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
+      sudo docker run -d -p 4150:4150 -p 4151:4151  nsqio/nsq /nsqd   --broadcast-address=172.17.42.1 --lookupd-tcp-address=172.17.42.1:4160
+      sudo docker run -d -p 80:80 -p 8125:8125/udp -p 8126:8126  kamon/grafana_graphite
+      sudo docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
+      
+      
+PS: 参考启动脚本: [base_service.sh](base_service.sh)  
+
 ## 框架
 执行克隆:       
 
      $curl -s https://raw.githubusercontent.com/gonet2/tools/master/clone_all.sh | sh      
 
-
-## 启动
-### 基础设施
-1. nsq        
-
-    docker启动(开发环境推荐):
-
-        docker pull nsqio/nsq
-        docker run --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
-	
-        docker run --name nsqd -p 4150:4150 -p 4151:4151 \
-        	nsqio/nsq /nsqd \
-        	--broadcast-address=172.17.42.1 \
-        	--lookupd-tcp-address=172.17.42.1:4160
-
-    本地运行(生产环境推荐):
-
-        $nsqlookupd --tcp-address=172.17.42.1:4160 --http-address=172.17.42.1:4161 &       
-        $nsqd --lookupd-tcp-address=172.17.42.1:4160 --tcp-address=172.17.42.1:4150 --http-address=172.17.42.1:4151 &
-        $nsqadmin --lookupd-http-address=172.17.42.1:4161 --http-address=172.17.42.1:4171 &
-
-2. etcd
-
-        $etcd &
-
-3. gliderlabs/registrator
- 
-         $docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
-
-4. docker-grafana-graphite
-
-        docker run -d -p 80:80 -p 8125:8125/udp -p 8126:8126 --name kamon-grafana-dashboard kamon/grafana_graphite
-
-
-PS: 参考启动脚本: [base_service.sh](base_service.sh)  
-		
 ### Docker启动服务(推荐)
 docker中运行：所有服务运行在docker中，并通过registrator自动注册；            
 如snowflake:  
