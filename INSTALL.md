@@ -16,7 +16,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 包含: etcd, nsq, statsd, registrator, mongodb
 
       sudo ip addr add 172.17.42.1/16 dev docker0
-      sudo docker run -d -p 2379:2379  quay.io/coreos/etcd:v0.4.6 -addr 172.17.42.1:2379
+      sudo docker run -d -p 2379:2379 quay.io/coreos/etcd:v0.4.6 -addr 172.17.42.1:2379
       sudo docker run -d -p 27017:27017  -v /data/db:/data/db -d mongo
       sudo docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
       sudo docker run -d -p 4150:4150 -p 4151:4151  nsqio/nsq /nsqd   --broadcast-address=172.17.42.1 --lookupd-tcp-address=172.17.42.1:4160
