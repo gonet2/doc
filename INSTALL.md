@@ -13,7 +13,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 请预先安装好上述环境，并确保172.17.42.1是容器可访问地址，所有基础设施都应该监听这个地址， 如mongodb, nsq, etcd
 
 ## 基础设施的参考安装(docker)
-包含: etcd, nsq, statsd, registrator
+包含: etcd, nsq, statsd, registrator, mongodb
 
       sudo ip addr add 172.17.42.1/16 dev docker0
       sudo docker pull quay.io/coreos/etcd-git
