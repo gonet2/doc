@@ -10,7 +10,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 4. https://github.com/pote/gvp
 5. https://github.com/pote/gpm
 
-## 开发环境搭建
+## 开发环境基础服务搭建
 
      sudo ip addr add 172.17.42.1/16 dev docker0
      sudo docker run --name etcd -d -p 2379:2379  quay.io/coreos/etcd:v0.4.6 -addr 172.17.42.1:2379
