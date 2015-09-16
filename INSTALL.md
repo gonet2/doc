@@ -11,7 +11,6 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 5. https://github.com/pote/gpm
 
 ## 开发环境搭建
-包含: etcd, nsq, statsd, registrator, mongodb
 
      sudo ip addr add 172.17.42.1/16 dev docker0
      sudo docker rm -f registrator etcd mongodb nsqd lookupd statsd etcd-browser
