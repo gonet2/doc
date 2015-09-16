@@ -68,5 +68,5 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
 	
 	2. upload_numbers 上传配置文件到etcd(以逗号分割的csv文件)
 		$go get https://github.com/gonet2/tools/upload_numbers
-		$upload_numbers numbers --addr http://172.17.42.1:4001 --dir ~/gonet2/gamedata --pattern="/*.csv"
+		$upload_numbers numbers --addr http://172.17.42.1:2379 --dir ~/gonet2/gamedata --pattern="/*.csv"
 	
