@@ -24,7 +24,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
       
 服务重启:
 
-     sudo docker restart registrator etcd mongodb nsqd lookupd statsd etcd-browser registry
+     sudo docker restart  etcd mongodb nsqd lookupd statsd etcd-browser registry registrator
 
 PS: 参考生产环境启动脚本: [base_service.sh](base_service.sh)  
 
