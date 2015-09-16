@@ -10,21 +10,26 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 4. https://github.com/pote/gvp
 5. https://github.com/pote/gpm
 
-请预先安装好上述环境，并确保172.17.42.1是容器可访问地址，所有基础设施都应该监听这个地址， 如mongodb, nsq, etcd
-
-## 基础设施的参考安装(docker)
+## 开发环境搭建
 包含: etcd, nsq, statsd, registrator, mongodb
 
-      sudo ip addr add 172.17.42.1/16 dev docker0
-      sudo docker run -d -p 2379:2379 quay.io/coreos/etcd:v0.4.6 -addr 172.17.42.1:2379
-      sudo docker run -d -p 27017:27017  -v /data/db:/data/db -d mongo
-      sudo docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
-      sudo docker run -d -p 4150:4150 -p 4151:4151  nsqio/nsq /nsqd   --broadcast-address=172.17.42.1 --lookupd-tcp-address=172.17.42.1:4160
-      sudo docker run -d -p 80:80 -p 8125:8125/udp -p 8126:8126  kamon/grafana_graphite
-      sudo docker run -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
+     sudo ip addr add 172.17.42.1/16 dev docker0
+     sudo docker rm -f registrator etcd mongodb nsqd lookupd statsd etcd-browser
+     sudo docker restart registrator etcd mongodb nsqd lookupd statsd etcd-browser registry
+     sudo docker run --name registrator -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
+     sudo docker run --name etcd -d -p 2379:2379  quay.io/coreos/etcd:v0.4.6 -addr 172.17.42.1:2379
+     sudo docker run --name mongodb -d -p 27017:27017  -v /data/db:/data/db -d mongo
+     sudo docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
+     sudo docker run -d --name nsqd -p 4150:4150 -p 4151:4151  nsqio/nsq /nsqd   --broadcast-address=172.17.42.1   --lookupd-tcp-address=172.17.42.1:4160
+     sudo docker run -d --name statsd -p 80:80 -p 8125:8125/udp -p 8126:8126  kamon/grafana_graphite
+     sudo docker run -d --name etcd-browser -p 0.0.0.0:8000:8000 --env ETCD_HOST=172.17.42.1 --env ETCD_PORT=2379  --env AUTH_USER=admin --env AUTH_PASS=admin etcd-browser
+     sudo docker run -d --name registry -e SETTINGS_FLAVOR=dev -e STORAGE_PATH=/tmp/registry -v /data/registry:/tmp/registry  -p 5000:5000 registry
       
-      
-PS: 参考启动脚本: [base_service.sh](base_service.sh)  
+服务重启:
+
+     sudo docker restart registrator etcd mongodb nsqd lookupd statsd etcd-browser registry
+
+PS: 参考生产环境启动脚本: [base_service.sh](base_service.sh)  
 
 ## 框架
 执行克隆:       
