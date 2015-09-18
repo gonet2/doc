@@ -13,7 +13,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 ## 开发环境基础服务搭建
 
      sudo ip addr add 172.17.42.1/16 dev docker0
-     sudo docker run --name etcd -d -p 2379:2379  quay.io/coreos/etcd:v0.4.6 -addr 172.17.42.1:2379
+     sudo docker run --name etcd -d -p 2379:2379  quay.io/coreos/etcd -addr 172.17.42.1:2379
      sudo docker run --name registrator -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
      sudo docker run --name mongodb -d -p 27017:27017  -v /data/db:/data/db -d mongo
      sudo docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
