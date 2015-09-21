@@ -51,7 +51,7 @@ PS: 参考生产环境启动脚本: [base_service.sh](base_service.sh)
 
 ### Docker启动服务(推荐)
 docker中运行：所有服务运行在docker中，并通过registrator自动注册；            
-如snowflake:  
+比如启动agent: 
 
          $cd agent
          $source gvp
