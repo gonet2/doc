@@ -17,7 +17,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
      $docker-machine upgrade default
      eval "$(docker-machine env default)"
      $docker run --name etcd -d -p 2379:2379  quay.io/coreos/etcd -addr 172.17.42.1:2379
-     $docker run --name mongodb -d -p 27017:27017  -v /data/db:/data/db -d mongo
+     $docker run --name mongodb -d -p 27017:27017 -d mongo
      $docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
      $docker run -d --name nsqd -p 4150:4150 -p 4151:4151  nsqio/nsq /nsqd   --broadcast-address=172.17.42.1   --lookupd-tcp-address=172.17.42.1:4160
      $docker run -d --name etcd-browser -p 0.0.0.0:8000:8000 --env ETCD_HOST=172.17.42.1 --env ETCD_PORT=2379  --env AUTH_USER=admin --env AUTH_PASS=admin etcd-browser
