@@ -15,6 +15,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
      安装 docker toolbox : https://www.docker.com/toolbox
      $docker-machine create --driver virtualbox default
      $docker-machine upgrade default
+     eval "$(docker-machine env default)"
      $docker run --name etcd -d -p 2379:2379  quay.io/coreos/etcd -addr 172.17.42.1:2379
      $docker run --name mongodb -d -p 27017:27017  -v /data/db:/data/db -d mongo
      $docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
