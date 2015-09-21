@@ -53,10 +53,11 @@ PS: 参考生产环境启动脚本: [base_service.sh](base_service.sh)
 docker中运行：所有服务运行在docker中，并通过registrator自动注册；            
 如snowflake:  
 
-         $cd snowflake
+         $cd agent
+         $source gvp
          $gpm
-         $docker build -t snowflake
-         $docker run -d --name snowflake -e SERVICE_ID=snowflake1 -P snowflake
+         $docker build -t agent .
+         $docker run -d -P 8888:8888 --name agent -e SERVICE_ID=agent1 agent
 
 
 ### 普通启动服务
@@ -66,7 +67,7 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
          $source gvp
          $gpm
          $go install agent
-         $./startup.sh
+         $agent
 
 ### 服务注册
 一般情况下， registrator 会自动注册通过docker启动的服务, 为了调试的方便，可以不通过docker启动，并且手动注册到etcd， etcd的服务注册地址为:
