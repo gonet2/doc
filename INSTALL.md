@@ -54,6 +54,7 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
 如snowflake:  
 
          $cd snowflake
+         $gpm
          $docker build -t snowflake
          $docker run -d --name snowflake -e SERVICE_ID=snowflake1 -P snowflake
 
