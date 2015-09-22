@@ -3,12 +3,10 @@
 gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，理论上主流linux都能运行。      
 开发工具链可以访问[TOOLCHAIN.md](TOOLCHAIN.md)     
 
-## 基础设施
-1. http://nsq.io/        
-2. https://github.com/coreos/etcd       
-3. https://www.docker.com/    
-4. https://github.com/pote/gvp
-5. https://github.com/pote/gpm
+## 请预先安装好
+1. https://www.docker.com/ (MAC安装docker-machine)  
+2. https://github.com/pote/gvp
+3. https://github.com/pote/gpm
 
 ## 开发环境基础服务搭建(MAC OS X)
 
