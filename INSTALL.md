@@ -7,6 +7,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 1. https://www.docker.com/ (MAC安装docker-machine)  
 2. https://github.com/pote/gvp
 3. https://github.com/pote/gpm
+4. https://github.com/henszey/etcd-browser
 
 ## 开发环境基础服务搭建(MAC OS X)
 
