@@ -77,6 +77,10 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
 例如:
 
          $etcdctl set /backends/snowflake/snowflake1 172.17.42.1:51006
+         
+## 客户端与服务器的对接
+
+参考 https://github.com/en/unity-lib
 
 
 ## 工具安装
