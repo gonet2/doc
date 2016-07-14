@@ -54,8 +54,6 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
 比如启动agent: 
 
          $cd agent
-         $source gvp
-         $gpm
          $docker build -t agent .
          $docker run -d -p 8888:8888 --name agent -e SERVICE_ID=agent1 agent
 
@@ -64,8 +62,6 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
 比如启动agent: 
 
          $cd agent
-         $source gvp
-         $gpm
          $go install agent
          $agent
 
