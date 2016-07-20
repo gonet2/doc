@@ -4,16 +4,22 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 开发工具链可以访问[TOOLCHAIN.md](TOOLCHAIN.md)     
 
 ## etcd
-![etcd](https://github.com/coreos/etcd/raw/master/logos/etcd-horizontal-color.png)
+![https://github.com/coreos/etcd](etcd.png)
+
 https://coreos.com/etcd/docs/2.0.8/docker_guide.html#running-etcd-in-standalone-mode
 
 ## Mongodb
+![https://www.mongodb.com/](mongodb.jpg)
 https://hub.docker.com/_/mongo/
 
 ## 性能监控
 https://hub.docker.com/r/kamon/grafana_graphite/
 
 ## 日志ELK
+![https://www.elastic.co/products/elasticsearch](icon-elasticsearch.svg) 
+![https://www.elastic.co/products/logstash](icon-logstash.svg) 
+![https://www.elastic.co/products/kibana](icon-kibana.svg) 
+
 https://hub.docker.com/r/sebp/elk/
 
 ## stdout汇聚
