@@ -4,6 +4,7 @@ gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，�
 开发工具链可以访问[TOOLCHAIN.md](TOOLCHAIN.md)     
 
 ## etcd
+![etcd](https://github.com/coreos/etcd/raw/master/logos/etcd-horizontal-color.png)
 https://coreos.com/etcd/docs/2.0.8/docker_guide.html#running-etcd-in-standalone-mode
 
 ## Mongodb
