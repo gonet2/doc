@@ -3,46 +3,23 @@
 gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，理论上主流linux都能运行。      
 开发工具链可以访问[TOOLCHAIN.md](TOOLCHAIN.md)     
 
-## 请预先安装好
-1. https://www.docker.com/ (MAC安装docker-machine)  
-2. https://github.com/kardianos/govendor
-3. https://github.com/henszey/etcd-browser
-4. https://github.com/gonet2/libs/blob/master/services/init.sh
+## etcd
+https://coreos.com/etcd/docs/2.0.8/docker_guide.html#running-etcd-in-standalone-mode
 
-## 开发环境基础服务搭建(MAC OS X)
+## Mongodb
+https://hub.docker.com/_/mongo/
 
-     安装 docker toolbox : https://www.docker.com/toolbox
-     $docker-machine create --driver virtualbox default
-     $docker-machine upgrade default
-     $eval "$(docker-machine env default)"
-     $docker run --name etcd -d -p 2379:2379  quay.io/coreos/etcd -addr 172.17.42.1:2379
-     $docker run --name mongodb -d -p 27017:27017 -d mongo
-     $docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
-     $docker run -d --name nsqd -p 4150:4150 -p 4151:4151  nsqio/nsq /nsqd   --broadcast-address=172.17.42.1   --lookupd-tcp-address=172.17.42.1:4160
-     $docker run -d --name statsd -p 80:80 -p 8125:8125/udp -p 8126:8126  kamon/grafana_graphite
-     $docker run -d --name etcd-browser -p 0.0.0.0:8000:8000 --env ETCD_HOST=172.17.42.1 --env ETCD_PORT=2379  --env AUTH_USER=admin --env AUTH_PASS=admin etcd-browser
-     注意: 进入docker-machine运行registrator
-     $docker-machine ssh default
-     $docker run --name registrator -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
+## 性能监控
+https://hub.docker.com/r/kamon/grafana_graphite/
 
-## 开发环境基础服务搭建(ubuntu 14.04)
+## 日志ELK
+https://hub.docker.com/r/sebp/elk/
 
-     sudo ip addr add 172.17.42.1/16 dev docker0
-     sudo docker run --name etcd -d -p 2379:2379  quay.io/coreos/etcd -addr 172.17.42.1:2379
-     sudo docker run --name registrator -d -v /var/run/docker.sock:/tmp/docker.sock gliderlabs/registrator -ip="172.17.42.1" etcd://172.17.42.1:2379/backends
-     sudo docker run --name mongodb -d -p 27017:27017  -v /data/db:/data/db -d mongo
-     sudo docker run -d --name lookupd -p 4160:4160 -p 4161:4161 nsqio/nsq /nsqlookupd
-     sudo docker run -d --name nsqd -p 4150:4150 -p 4151:4151  nsqio/nsq /nsqd   --broadcast-address=172.17.42.1   --lookupd-tcp-address=172.17.42.1:4160
-     sudo docker run -d --name statsd -p 80:80 -p 8125:8125/udp -p 8126:8126  kamon/grafana_graphite
-     sudo docker run -d --name etcd-browser -p 0.0.0.0:8000:8000 --env ETCD_HOST=172.17.42.1 --env ETCD_PORT=2379  --env AUTH_USER=admin --env AUTH_PASS=admin etcd-browser
-     sudo docker run -d --name registry -e SETTINGS_FLAVOR=dev -e STORAGE_PATH=/tmp/registry -v /data/registry:/tmp/registry  -p 5000:5000 registry
-      
-服务重启:
+## stdout汇聚
+https://hub.docker.com/r/gliderlabs/logspout/
 
-     sudo docker restart  etcd mongodb nsqd lookupd statsd etcd-browser registry registrator
-
-
-PS: 参考生产环境启动脚本: [base_service.sh](base_service.sh)  
+## Registrator
+https://hub.docker.com/r/gliderlabs/registrator/
 
 ## 框架
 执行克隆:       
