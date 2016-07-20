@@ -16,7 +16,7 @@ https://hub.docker.com/_/mongo/
 https://hub.docker.com/r/kamon/grafana_graphite/
 
 ## 日志ELK
-![https://www.elastic.co/products/elasticsearch](icon-elasticsearch.svg) 
+![https://www.elastic.co/products/elasticsearch](https://raw.githubusercontent.com/gonet2/doc/master/icon-elasticsearch.svg) 
 ![https://www.elastic.co/products/logstash](icon-logstash.svg) 
 ![https://www.elastic.co/products/kibana](icon-kibana.svg) 
 
