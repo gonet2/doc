@@ -1,31 +1,29 @@
 # 安装
-## 环境
+### 环境
 gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，理论上主流linux都能运行。      
 开发工具链可以访问[TOOLCHAIN.md](TOOLCHAIN.md)     
 
-## etcd
+### etcd
 <img src="etcd.png" alt="etcd" height="60px" />     
 
 https://coreos.com/etcd/docs/2.0.8/docker_guide.html#running-etcd-in-standalone-mode
-
-## Mongodb
+### mongodb
 <img src="mongodb.jpg" alt="mongodb" height="60px" />     
 
 https://hub.docker.com/_/mongo/
-
-## StatsD + Graphite + Grafana 2 + Kamon Dashboards
+### StatsD + Graphite + Grafana 2 + Kamon Dashboards
 https://hub.docker.com/r/kamon/grafana_graphite/
 
-## ElasticSearch + LogStash + Kibana
+### ElasticSearch + LogStash + Kibana
 https://hub.docker.com/r/sebp/elk/
 
-## stdout汇聚
+### stdout汇聚
 https://hub.docker.com/r/gliderlabs/logspout/
 
-## registrator
+### registrator
 https://hub.docker.com/r/gliderlabs/registrator/
 
-## etcd-browser
+### etcd-browser
 https://hub.docker.com/r/buddho/etcd-browser/
 
 ## 框架
