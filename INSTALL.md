@@ -58,7 +58,7 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
          
 ## 客户端与服务器的对接
 
-参考 https://github.com/en/unity-lib
+参考 https://github.com/en/libunity
 
 
 ## 工具安装
