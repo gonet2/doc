@@ -3,9 +3,12 @@
 * [drone](https://github.com/drone/drone)
 
 安装好以上的工具，下面以agent为例做持续部署:
-```yml
+```
 $ cd gonet2/src/agent
 $ cat .drone.yml
+```
+
+```yml
 cache:
   mount:
     - .git
