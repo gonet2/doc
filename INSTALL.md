@@ -59,14 +59,9 @@ docker中运行：所有服务运行在docker中，并通过registrator自动注
 ## 客户端与服务器的对接
 
 参考 https://github.com/en/libunity
-
-
-## 工具安装
-	1.tailn 查看所有服务的日志
-		$go get https://github.com/gonet2/tools/tailn
-		$tailn
 	
-	2. 协议生成
-		$cd /github.com/gonet2/tools/proto_scripts
-		$./gen_proto.sh
-	
+## 协议生成
+```
+$cd /github.com/gonet2/tools/proto_scripts
+$./gen_proto.sh
+```	
