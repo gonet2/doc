@@ -47,4 +47,13 @@ deploy:
       - sudo docker pull 192.168.1.220:5000/agent
       - sudo docker rm -f agent1
       - sudo docker run --link etcd --link mongodb  --link statsd -e STATSD_HOST="statsd:8125" --name agent1 -h agent-dev -d -p 8888:8888 -p 8888:8888/udp -p 6060:6060 -e SERVICE_ID=agent1 -e ETCD_HOST="http://etcd:2379" -e MONGODB_URL="mongodb://mongodb/mydb" 192.168.1.220:5000/agent
+      
+notify:
+  email:
+    from: drone-notify@example.com
+    host: smtp.exmail.qq.com
+    port: 465
+    username: drone-notify@example.com
+    password: MYPASSWORD
+
 ```
