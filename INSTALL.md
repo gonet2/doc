@@ -1,7 +1,7 @@
 # 安装
 ### 环境
 gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，理论上主流linux都能运行。      
-开发工具链可以访问[TOOLCHAIN.md](TOOLCHAIN.md)     
+请首先安装好以下的docker镜像。
 
 ### etcd
 <img src="etcd.png" alt="etcd" height="60px" />     
