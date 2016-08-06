@@ -1,7 +1,7 @@
 # 安装
 ### 环境
 gonet2全部在linux + mac环境中开发，确保能在ubuntu 14.04 运行，理论上主流linux都能运行。      
-请首先安装好以下的docker镜像。
+请首先安装好以下的docker镜像（你也可以采用[Rancher](http://rancher.com/)在应用商店中安装）。
 
 ### etcd
 <img src="etcd.png" alt="etcd" height="60px" />     
